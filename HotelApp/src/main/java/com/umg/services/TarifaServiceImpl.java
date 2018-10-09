@@ -37,4 +37,11 @@ public class TarifaServiceImpl implements ITarifaService {
 		
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public Tarifa findById(Long id) {
+		// TODO Auto-generated method stub
+		return tarifaDao.findById(id).orElse(null);
+	}
+
 }
