@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipoEmpleado")
+@Table(name = "tipoempleado")
 public class TipoEmpleado implements Serializable {
 	
 	/**
@@ -18,23 +18,23 @@ public class TipoEmpleado implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name = "tipoEmpleadoID")
+	@Column(name = "tipoempleadoID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idTipoEmpleado;
-	private String nombreTipoEmpleado;
+	private Long tipoempleadoID;
+	private String nombretipoempleado;
 	private String permisos;
 	
-	public Long getIdTipoEmpleado() {
-		return idTipoEmpleado;
+	public Long gettipoempleadoID() {
+		return tipoempleadoID;
 	}
-	public void setIdTipoEmpleado(Long idTipoEmpleado) {
-		this.idTipoEmpleado = idTipoEmpleado;
+	public void settipoempleadoID(Long tipoempleadoID) {
+		this.tipoempleadoID = tipoempleadoID;
 	}
-	public String getNombreTipoEmpleado() {
-		return nombreTipoEmpleado;
+	public String getnombretipoempleado() {
+		return nombretipoempleado;
 	}
-	public void setNombreTipoEmpleado(String nombreTipoEmpleado) {
-		this.nombreTipoEmpleado = nombreTipoEmpleado;
+	public void setnombretipoempleado(String nombretipoempleado) {
+		this.nombretipoempleado = nombretipoempleado;
 	}
 	public String getPermisos() {
 		return permisos;

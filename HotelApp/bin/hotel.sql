@@ -72,7 +72,6 @@ create table itemfact(
 
 alter table facturaDTO add foreign key (itemID) references itemfact(itemID) on delete cascade;
 
-
 create table Usuario(
 	usuarioID int auto_increment primary key,
 	nombreUsuario varchar(45),
@@ -80,16 +79,16 @@ create table Usuario(
 	direccionUsuario varchar(45),
 	telefonoUsuario varchar(10),
 	emailUsuario varchar(25),
-	tipoempleadoID int
+	IDtipoEmpleado int
 );
  
 create table tipoempleado(
 	tipoempleadoID int auto_increment primary key,
-	nombretipoempleado varchar(45),
+	nombreTipoempleado varchar(45),
 	permisos varchar(45)
 );
 
-alter table Usuario add foreign key (tipoempleadoID) references tipoEmpleado(tipoempleadoID) on delete cascade;
+alter table Usuario add foreign key (tipoEmpleadoID) references tipoEmpleado(tipoEmpleadoID) on delete cascade;
 
 
 

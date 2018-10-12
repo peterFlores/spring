@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "itemFact")
+@Table(name = "itemfact")
 public class ItemFactura implements Serializable {
 
 	/**
@@ -24,8 +24,6 @@ public class ItemFactura implements Serializable {
 	private Long idItem;
 	private String item;
 	private Double costo;
-	
-	
 	public Long getIdItem() {
 		return idItem;
 	}

@@ -14,46 +14,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.models.Tarifa;
-import com.umg.services.ITarifaService;
+import com.umg.models.ItemFactura;
+import com.umg.services.IFacturaItemService;
+
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-public class TarifaController {
-
+public class FacturaItemController {
 	@Autowired
-	public ITarifaService service;
+	public IFacturaItemService service;
 	
-	@GetMapping("/tarifas")
-	public List<Tarifa> tarifas() {
+
+	@GetMapping("/Itemfac")
+	public List<ItemFactura> Itemfac() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/tarifas")
+	@PostMapping("/Itemfac")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa agregarTarifa(@RequestBody Tarifa tarifa) {
-		return service.save(tarifa);
+	public ItemFactura agregarItemfactura(@RequestBody ItemFactura itemfactura) {
+		return service.save(itemfactura);
 		
 	}
 	
-	@GetMapping("/tarifas/{id}")
-	public Tarifa show(@PathVariable Long id) {
+	@GetMapping("/Itemfac/{id}")
+	public ItemFactura show(@PathVariable Long id) {
 		return service.findById(id);
 	}
 	
-	@PutMapping("/tarifas/{id}")
+	@PutMapping("/Itemfac/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa update(@RequestBody Tarifa tarifa, @PathVariable Long id) {
-		Tarifa tarifaActual = service.findById(id);
-		tarifaActual.setTarifa(tarifa.getTarifa());
-		tarifaActual.setCosto(tarifa.getCosto());
+	public ItemFactura update(@RequestBody ItemFactura itemfactura, @PathVariable Long id) {
+		ItemFactura itemActual = service.findById(id);
+		itemActual.setItem(itemfactura.getItem());
+		itemActual.setCosto(itemfactura.getCosto());
 		
-		return service.save(tarifaActual);
+		return service.save(itemActual);
 	}
 	
-	@DeleteMapping("/tarifas/{id}")
+	@DeleteMapping("/Itemfac/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);
 	}
-} 
+}

@@ -14,46 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.models.Tarifa;
-import com.umg.services.ITarifaService;
+import com.umg.models.Factura;
+import com.umg.services.IFacturaService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-public class TarifaController {
-
+public class FacturaController {
 	@Autowired
-	public ITarifaService service;
+	public IFacturaService service;
 	
-	@GetMapping("/tarifas")
-	public List<Tarifa> tarifas() {
+	@GetMapping("/factura")
+	public List<Factura> factura() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/tarifas")
+	@PostMapping("/factura")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa agregarTarifa(@RequestBody Tarifa tarifa) {
-		return service.save(tarifa);
-		
+	public Factura agregarFactura(@RequestBody Factura factura) {
+		return service.save(factura);	
 	}
-	
-	@GetMapping("/tarifas/{id}")
-	public Tarifa show(@PathVariable Long id) {
+	@GetMapping("/factura/{id}")
+	public Factura show(@PathVariable Long id) {
 		return service.findById(id);
 	}
-	
-	@PutMapping("/tarifas/{id}")
+	@PutMapping("/factura/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa update(@RequestBody Tarifa tarifa, @PathVariable Long id) {
-		Tarifa tarifaActual = service.findById(id);
-		tarifaActual.setTarifa(tarifa.getTarifa());
-		tarifaActual.setCosto(tarifa.getCosto());
-		
-		return service.save(tarifaActual);
+	public Factura update(@RequestBody Factura factura, @PathVariable Long id) {
+		Factura FacturaActual = service.findById(id);
+		FacturaActual.setNumfact(factura.getNumfact());
+		FacturaActual.setSerie(factura.getSerie());
+		return service.save(FacturaActual);
 	}
-	
-	@DeleteMapping("/tarifas/{id}")
+	@DeleteMapping("/factura/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);
 	}
-} 
+	
+}

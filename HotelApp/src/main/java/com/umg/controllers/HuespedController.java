@@ -14,46 +14,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.models.Tarifa;
-import com.umg.services.ITarifaService;
+import com.umg.models.Huesped;
+import com.umg.services.IHuespedService;
+
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-public class TarifaController {
-
+public class HuespedController {
 	@Autowired
-	public ITarifaService service;
-	
-	@GetMapping("/tarifas")
-	public List<Tarifa> tarifas() {
+	public IHuespedService service;
+	@GetMapping("/huespeds")
+	public List<Huesped> huespeds() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/tarifas")
+	@PostMapping("/huespeds")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa agregarTarifa(@RequestBody Tarifa tarifa) {
-		return service.save(tarifa);
+	public Huesped agregarHuesped(@RequestBody Huesped huesped) {
+		return service.save(huesped);
 		
 	}
 	
-	@GetMapping("/tarifas/{id}")
-	public Tarifa show(@PathVariable Long id) {
+	@GetMapping("/huespeds/{id}")
+	public Huesped show(@PathVariable Long id) {
 		return service.findById(id);
 	}
 	
-	@PutMapping("/tarifas/{id}")
+	@PutMapping("/huespeds/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa update(@RequestBody Tarifa tarifa, @PathVariable Long id) {
-		Tarifa tarifaActual = service.findById(id);
-		tarifaActual.setTarifa(tarifa.getTarifa());
-		tarifaActual.setCosto(tarifa.getCosto());
-		
-		return service.save(tarifaActual);
+	public Huesped update(@RequestBody Huesped huesped, @PathVariable Long id) {
+		Huesped huespedActual = service.findById(id);
+		huespedActual.setNombre(huesped.getNombre());
+		huespedActual.setApellido(huesped.getApellido());
+		huespedActual.setDireccion(huesped.getDireccion());
+		huespedActual.setEdad(huesped.getEdad());
+		huespedActual.setGenero(huesped.getGenero());
+		huespedActual.setTelefono(huesped.getTelefono());
+		huespedActual.setDpi(huesped.getDpi());
+		return service.save(huespedActual);
 	}
 	
-	@DeleteMapping("/tarifas/{id}")
+	@DeleteMapping("/huespeds/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);
 	}
 } 
+
+

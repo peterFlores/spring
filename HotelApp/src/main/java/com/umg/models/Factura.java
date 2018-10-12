@@ -23,7 +23,7 @@ public class Factura implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFactura;
 	private String serie;
-	private String numFact;
+	private String numfact;
 	
 	public Long getIdFactura() {
 		return idFactura;
@@ -37,11 +37,11 @@ public class Factura implements Serializable {
 	public void setSerie(String serie) {
 		this.serie = serie;
 	}
-	public String getNumFact() {
-		return numFact;
+	public String getNumfact() {
+		return numfact;
 	}
-	public void setNumFact(String numFact) {
-		this.numFact = numFact;
+	public void setNumfact(String numfact) {
+		this.numfact = numfact;
 	}
 	
 	

@@ -14,46 +14,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.models.Tarifa;
-import com.umg.services.ITarifaService;
+import com.umg.models.TipoEmpleado;
+import com.umg.services.ITipoEmpleadoService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-public class TarifaController {
-
+public class TipoEmpleadoController {
 	@Autowired
-	public ITarifaService service;
+	public ITipoEmpleadoService service;
 	
-	@GetMapping("/tarifas")
-	public List<Tarifa> tarifas() {
+	@GetMapping("/tipoempleado")
+	public List<TipoEmpleado> tipoempleado() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/tarifas")
+	@PostMapping("/tipoempleado")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa agregarTarifa(@RequestBody Tarifa tarifa) {
-		return service.save(tarifa);
+	public TipoEmpleado agregartipoempleado(@RequestBody TipoEmpleado tipoempleado) {
+		return service.save(tipoempleado);
 		
 	}
 	
-	@GetMapping("/tarifas/{id}")
-	public Tarifa show(@PathVariable Long id) {
+	@GetMapping("/tipoempleado/{id}")
+	public TipoEmpleado show(@PathVariable Long id) {
 		return service.findById(id);
 	}
 	
-	@PutMapping("/tarifas/{id}")
+	@PutMapping("/tipoempleado/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Tarifa update(@RequestBody Tarifa tarifa, @PathVariable Long id) {
-		Tarifa tarifaActual = service.findById(id);
-		tarifaActual.setTarifa(tarifa.getTarifa());
-		tarifaActual.setCosto(tarifa.getCosto());
+	public TipoEmpleado update(@RequestBody TipoEmpleado tipoempleado, @PathVariable Long id) {
+		TipoEmpleado tipoempleadoActual = service.findById(id);
+		tipoempleadoActual.setnombretipoempleado(tipoempleado.getnombretipoempleado());
+		tipoempleadoActual.setPermisos(tipoempleado.getPermisos());
 		
-		return service.save(tarifaActual);
+		return service.save(tipoempleadoActual);
 	}
 	
-	@DeleteMapping("/tarifas/{id}")
+	@DeleteMapping("/tipoempleado/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);
 	}
-} 
+	
+}
