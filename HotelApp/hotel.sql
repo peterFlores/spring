@@ -80,16 +80,16 @@ create table Usuario(
 	direccionUsuario varchar(45),
 	telefonoUsuario varchar(10),
 	emailUsuario varchar(25),
-	tipoempleadoID int
+	tipoEmpleadoID int
 );
  
-create table tipoempleado(
-	tipoempleadoID int auto_increment primary key,
-	nombretipoempleado varchar(45),
+create table tipoEmpleado(
+	tipoEmpleadoID int auto_increment primary key,
+	tipoEmpleado varchar(45),
 	permisos varchar(45)
 );
 
-alter table Usuario add foreign key (tipoempleadoID) references tipoEmpleado(tipoempleadoID) on delete cascade;
+alter table Usuario add foreign key (tipoEmpleadoID) references tipoEmpleado(tipoEmpleadoID) on delete cascade;
 
 
 
