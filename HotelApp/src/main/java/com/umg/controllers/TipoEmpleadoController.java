@@ -23,34 +23,34 @@ public class TipoEmpleadoController {
 	@Autowired
 	public ITipoEmpleadoService service;
 	
-	@GetMapping("/tipoempleado")
+	@GetMapping("/tipo_empleado")
 	public List<TipoEmpleado> tipoempleado() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/tipoempleado")
+	@PostMapping("/tipo_empleado")
 	@ResponseStatus(HttpStatus.CREATED)
-	public TipoEmpleado agregartipoempleado(@RequestBody TipoEmpleado tipoempleado) {
-		return service.save(tipoempleado);
+	public TipoEmpleado agregarTipoEmpleado(@RequestBody TipoEmpleado tipoEmpleado) {
+		return service.save(tipoEmpleado);
 		
 	}
 	
-	@GetMapping("/tipoempleado/{id}")
+	@GetMapping("/tipo_empleado/{id}")
 	public TipoEmpleado show(@PathVariable Long id) {
 		return service.findById(id);
 	}
 	
-	@PutMapping("/tipoempleado/{id}")
+	@PutMapping("/tipo_empleado/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public TipoEmpleado update(@RequestBody TipoEmpleado tipoempleado, @PathVariable Long id) {
-		TipoEmpleado tipoempleadoActual = service.findById(id);
-		tipoempleadoActual.setnombretipoempleado(tipoempleado.getnombretipoempleado());
-		tipoempleadoActual.setPermisos(tipoempleado.getPermisos());
+	public TipoEmpleado update(@RequestBody TipoEmpleado tipoEmpleado, @PathVariable Long id) {
+		TipoEmpleado tipoEmpleadoActual = service.findById(id);
+		tipoEmpleadoActual.setNombreTipoEmpleado(tipoEmpleado.getNombreTipoEmpleado());
+		tipoEmpleadoActual.setPermisos(tipoEmpleado.getPermisos());
 		
-		return service.save(tipoempleadoActual);
+		return service.save(tipoEmpleadoActual);
 	}
 	
-	@DeleteMapping("/tipoempleado/{id}")
+	@DeleteMapping("/tipo_empleado/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);

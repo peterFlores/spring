@@ -1,9 +1,9 @@
-cd..
-cd.. 
-cd xampp 
-cd mysql
-cd bin
-mysql -h localhost -u root -p 
+--cd..
+--cd.. 
+--cd xampp 
+--cd mysql
+--cd bin
+--mysql -h localhost -u root -p 
 
 drop database if exists hotel;
 create database hotel;

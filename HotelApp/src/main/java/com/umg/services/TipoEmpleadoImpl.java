@@ -13,27 +13,27 @@ import com.umg.models.TipoEmpleado;
 public class TipoEmpleadoImpl implements ITipoEmpleadoService{
 
 	@Autowired
-	private ITipoEmpleadoDAO tipoempleadoDao;
+	private ITipoEmpleadoDAO tipoEmpleadoDao;
 		
 	@Override
 	@Transactional(readOnly = true)
 	public List<TipoEmpleado> findAll() {
 		// TODO Auto-generated method stub
-		return (List<TipoEmpleado>) tipoempleadoDao.findAll();
+		return (List<TipoEmpleado>) tipoEmpleadoDao.findAll();
 	}
 
 	@Override
 	@Transactional
 	public TipoEmpleado save(TipoEmpleado tipoempleado) {
 		// TODO Auto-generated method stub
-		return tipoempleadoDao.save(tipoempleado);
+		return tipoEmpleadoDao.save(tipoempleado);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public TipoEmpleado findById(long id) {
 		// TODO Auto-generated method stub
-		return tipoempleadoDao.findById(id).orElse(null);
+		return tipoEmpleadoDao.findById(id).orElse(null);
 		
 	}
 
@@ -41,7 +41,7 @@ public class TipoEmpleadoImpl implements ITipoEmpleadoService{
 	@Transactional
 	public void deleteById(long id) {
 		// TODO Auto-generated method stub
-		tipoempleadoDao.deleteById(id);
+		tipoEmpleadoDao.deleteById(id);
 	}
 	
 }

@@ -17,24 +17,28 @@ public class TipoEmpleado implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id
-	@Column(name = "tipoempleadoID")
+	@Column(name = "tipoempleadoid")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long tipoempleadoID;
-	private String nombretipoempleado;
+	private Long tipoEmpleadoID;
+	
+	@Column(name = "tipoempleado")
+	private String nombreTipoEmpleado;
+	
 	private String permisos;
 	
-	public Long gettipoempleadoID() {
-		return tipoempleadoID;
+	public Long getTipoEmpleadoID() {
+		return tipoEmpleadoID;
 	}
-	public void settipoempleadoID(Long tipoempleadoID) {
-		this.tipoempleadoID = tipoempleadoID;
+	public void setTipoEmpleadoID(Long tipoEmpleadoID) {
+		this.tipoEmpleadoID = tipoEmpleadoID;
 	}
-	public String getnombretipoempleado() {
-		return nombretipoempleado;
+	public String getNombreTipoEmpleado() {
+		return nombreTipoEmpleado;
 	}
-	public void setnombretipoempleado(String nombretipoempleado) {
-		this.nombretipoempleado = nombretipoempleado;
+	public void setNombreTipoEmpleado(String nombreTipoEmpleado) {
+		this.nombreTipoEmpleado = nombreTipoEmpleado;
 	}
 	public String getPermisos() {
 		return permisos;
@@ -42,7 +46,6 @@ public class TipoEmpleado implements Serializable {
 	public void setPermisos(String permisos) {
 		this.permisos = permisos;
 	}
-	
 	
 }
 
