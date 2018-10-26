@@ -14,46 +14,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.models.TipoEmpleado;
-import com.umg.services.ITipoEmpleadoService;
+import com.umg.dao.IRoomDAO;
+import com.umg.models.Reservacion;
+import com.umg.models.Room;
+import com.umg.models.Tarifa;
+import com.umg.services.IRoomService;
+import com.umg.services.ITarifaService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-public class TipoEmpleadoController {
+public class RoomController {
+
 	@Autowired
-	public ITipoEmpleadoService service;
+	private ITarifaService tarifaService;
 	
-	@GetMapping("/tipo_empleado")
-	public List<TipoEmpleado> listarEmpleados() {
+	@Autowired
+	private IRoomService service;
+
+	
+	@GetMapping("/rooms")
+	public List<Room> listar() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/tipo_empleado")
+	@PostMapping("/rooms/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public TipoEmpleado agregarTipoEmpleado(@RequestBody TipoEmpleado tipoEmpleado) {
-		return service.save(tipoEmpleado);
+	public Room agregarRoom(@PathVariable(value = "id") Long id, @RequestBody Room room) {
+		Tarifa tarifa = tarifaService.findById(id);
+		room.setTarifa(tarifa);
+		return service.save(room);
 		
 	}
 	
-	@GetMapping("/tipo_empleado/{id}")
-	public TipoEmpleado show(@PathVariable Long id) {
+	@GetMapping("/rooms/{id}")
+	public Room show(@PathVariable Long id) {
 		return service.findById(id);
 	}
 	
-	@PutMapping("/tipo_empleado/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
-	public TipoEmpleado update(@RequestBody TipoEmpleado tipoEmpleado, @PathVariable Long id) {
-		TipoEmpleado tipoEmpleadoActual = service.findById(id);
-		tipoEmpleadoActual.setNombreTipoEmpleado(tipoEmpleado.getNombreTipoEmpleado());
-		tipoEmpleadoActual.setPermisos(tipoEmpleado.getPermisos());
+	@PutMapping("/rooms/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Room update(@RequestBody Room room, @PathVariable(value = "id") Long id) {
+		//Tarifa tarifa = tarifaService.findById(tarifaId);
 		
-		return service.save(tipoEmpleadoActual);
+			if (service.findById(id) != null) {
+				room.setIdRoom(id);
+				return service.save(room);
+			}
+		
+		return null;
 	}
 	
-	@DeleteMapping("/tipo_empleado/{id}")
+	@DeleteMapping("/rooms/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);
 	}
 	
+
 }

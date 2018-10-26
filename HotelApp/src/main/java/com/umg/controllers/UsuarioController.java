@@ -14,46 +14,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.models.TipoEmpleado;
-import com.umg.services.ITipoEmpleadoService;
+import com.umg.models.Usuario;
+import com.umg.services.IUsuarioService;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
-public class TipoEmpleadoController {
-	@Autowired
-	public ITipoEmpleadoService service;
+public class UsuarioController {
 	
-	@GetMapping("/tipo_empleado")
-	public List<TipoEmpleado> listarEmpleados() {
+	@Autowired
+	private IUsuarioService service;
+
+	@GetMapping("/usuarios")
+	public List<Usuario> listar() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/tipo_empleado")
+	@PostMapping("/usuarios")
 	@ResponseStatus(HttpStatus.CREATED)
-	public TipoEmpleado agregarTipoEmpleado(@RequestBody TipoEmpleado tipoEmpleado) {
-		return service.save(tipoEmpleado);
+	public void agregarUsuario(@RequestBody Usuario usuario) {
+		service.save(usuario);
 		
 	}
 	
-	@GetMapping("/tipo_empleado/{id}")
-	public TipoEmpleado show(@PathVariable Long id) {
+	@GetMapping("/usuarios/{id}")
+	public Usuario show(@PathVariable Long id) {
 		return service.findById(id);
 	}
 	
-	@PutMapping("/tipo_empleado/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
-	public TipoEmpleado update(@RequestBody TipoEmpleado tipoEmpleado, @PathVariable Long id) {
-		TipoEmpleado tipoEmpleadoActual = service.findById(id);
-		tipoEmpleadoActual.setNombreTipoEmpleado(tipoEmpleado.getNombreTipoEmpleado());
-		tipoEmpleadoActual.setPermisos(tipoEmpleado.getPermisos());
-		
-		return service.save(tipoEmpleadoActual);
+	@PutMapping("/usuarios/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public Usuario update(@RequestBody Usuario usuario, @PathVariable Long id) {
+		usuario.setIdUsuario(id);
+		return service.save(usuario);
 	}
 	
-	@DeleteMapping("/tipo_empleado/{id}")
+	@DeleteMapping("/usuarios/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);
 	}
-	
 }

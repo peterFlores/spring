@@ -1,13 +1,18 @@
 package com.umg.models;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tarifa")
@@ -25,6 +30,26 @@ public class Tarifa implements Serializable {
 	private Long idTarifa;
 	private String tarifa;
 	private Double costo;
+	
+	@OneToMany(cascade =  CascadeType.ALL,mappedBy = "tarifa")
+	@JsonIgnore
+	private Set<Room> room;
+	
+	
+	public Tarifa() {
+		
+	}
+	
+	
+	
+	public Tarifa(String tarifa, Double costo, Room room) {
+		
+		this.tarifa = tarifa;
+		this.costo = costo;
+	}
+
+
+
 	public Long getIdTarifa() {
 		return idTarifa;
 	}
@@ -43,6 +68,20 @@ public class Tarifa implements Serializable {
 	public void setCosto(Double costo) {
 		this.costo = costo;
 	}
+
+
+
+	public Set<Room> getRoom() {
+		return room;
+	}
+
+
+
+	public void setRoom(Set<Room> room) {
+		this.room = room;
+	}
+	
+	
 	
 	
 

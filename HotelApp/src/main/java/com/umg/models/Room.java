@@ -3,17 +3,53 @@ package com.umg.models;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Room implements Serializable {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "room")
+public class Room  implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@Column(name = "roomID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idRoom;
-	private Integer idTarifa;
+	
+	private String room;
+	
+	@Column(name = "checkin", nullable = true)
 	private Date checkIn;
+	
+
+	@Column(name = "checkout", nullable = true)
 	private Date checkOut;
 	private String status;
+	
+	@ManyToOne
+	@JoinColumn(name = "tarifaID")
+	private Tarifa tarifa;
+	
+	public Room() {
+		
+	}
+	
+	public Room(String room, Date checkIn, Date checkOut, String status) {
+		this.room = room;
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
+		this.status = status;
+	}
 	public Long getIdRoom() {
 		
 		return idRoom;
@@ -21,12 +57,8 @@ public class Room implements Serializable {
 	public void setIdRoom(Long idRoom) {
 		this.idRoom = idRoom;
 	}
-	public Integer getIdTarifa() {
-		return idTarifa;
-	}
-	public void setIdTarifa(Integer idTarifa) {
-		this.idTarifa = idTarifa;
-	}
+	
+	
 	public Date getCheckIn() {
 		return checkIn;
 	}
@@ -44,6 +76,18 @@ public class Room implements Serializable {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getRoom() {
+		return room;
+	}
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	public Tarifa getTarifa() {
+		return tarifa;
+	}
+	public void setTarifa(Tarifa tarifa) {
+		this.tarifa = tarifa;
 	}
 	
 	

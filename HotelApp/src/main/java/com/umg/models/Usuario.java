@@ -2,6 +2,17 @@ package com.umg.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
 	/**
@@ -9,13 +20,25 @@ public class Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name = "usuarioID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;
+	
 	private String nombreUsuario;
 	private String apellidoUsuario;
 	private String direccionUsuario;
 	private String telefonoUsuario;
+	
 	private String emailUsuario;
-	private Integer idTipoEmpleado;
+	
+	@ManyToOne
+	@JoinColumn(name = "tipoEmpleadoID")
+	private TipoEmpleado tipoEmpleado;
+	
+	
+
+	
 	
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -53,13 +76,13 @@ public class Usuario implements Serializable {
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
 	}
-	public Integer getIdTipoEmpleado() {
-		return idTipoEmpleado;
+	public TipoEmpleado getTipoEmpleado() {
+		return tipoEmpleado;
 	}
-	public void setIdTipoEmpleado(Integer idTipoEmpleado) {
-		this.idTipoEmpleado = idTipoEmpleado;
+	public void setTipoEmpleado(TipoEmpleado tipoEmpleado) {
+		this.tipoEmpleado = tipoEmpleado;
 	}
 	
 	
-
+	
 }
