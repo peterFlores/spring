@@ -37,6 +37,11 @@ public class RoomController {
 		return service.findAll();
 	}
 	
+	@GetMapping("/rooms/availables")
+	public List<Room> listarAvailable() {
+		return service.findAllByStatus();
+	}
+	
 	@PostMapping("/rooms/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Room agregarRoom(@PathVariable(value = "id") Long id, @RequestBody Room room) {

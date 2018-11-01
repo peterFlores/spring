@@ -84,5 +84,11 @@ public class RoomServiceImpl implements IRoomService {
 		});
 	}
 
+	@Override
+	public List<Room> findAllByStatus() {
+		// TODO Auto-generated method stub
+		return (List<Room>) roomService.findAllByStatus();
+	}
+
 	
 }

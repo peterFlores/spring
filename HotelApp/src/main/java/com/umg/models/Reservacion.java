@@ -15,6 +15,8 @@ public class Reservacion implements Serializable {
 	private Huesped huesped;
 	private Room room;
 	private Factura factura;
+	
+	
 	public Long getIdHuesped() {
 		return idHuesped;
 	}
