@@ -28,14 +28,17 @@ public class FacturaController {
 		return service.findAll();
 	}
 	
+	
+	
 	@PostMapping("/factura")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Factura agregarFactura(@RequestBody Factura factura) {
 		return service.save(factura);	
 	}
 	@GetMapping("/factura/{id}")
-	public Factura show(@PathVariable Long id) {
-		return service.findById(id);
+	public List<Factura> showByHuesped(@PathVariable Long id) {
+		System.out.println("entro");
+		return service.findAllByHuesped(id);
 	}
 	@PutMapping("/factura/{id}")
 	@ResponseStatus(HttpStatus.CREATED)

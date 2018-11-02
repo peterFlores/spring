@@ -18,7 +18,7 @@ import com.umg.models.Tarifa;
 import com.umg.services.ITarifaService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"*"})
 public class TarifaController {
 
 	@Autowired

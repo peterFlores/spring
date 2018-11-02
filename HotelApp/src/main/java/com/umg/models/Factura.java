@@ -24,7 +24,7 @@ public class Factura implements Serializable {
 	private Long idFactura;
 	private String serie;
 	private String numfact;
-	
+	private Float total;
 	public Long getIdFactura() {
 		return idFactura;
 	}
@@ -42,6 +42,12 @@ public class Factura implements Serializable {
 	}
 	public void setNumfact(String numfact) {
 		this.numfact = numfact;
+	}
+	public Float getTotal() {
+		return total;
+	}
+	public void setTotal(Float total) {
+		this.total = total;
 	}
 	
 	

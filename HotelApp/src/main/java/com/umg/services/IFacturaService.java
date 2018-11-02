@@ -9,4 +9,5 @@ public interface IFacturaService {
 	public Factura save(Factura factura);
 	public Factura findById(Long id);
 	public void deleteById(Long id);
+	public List<Factura> findAllByHuesped(Long id);
 }

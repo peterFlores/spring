@@ -21,4 +21,7 @@ public interface IRoomService {
 	
 	public void update(Room room);
 	
+	public void insertReservation(Reservacion reservation);
+	
+	public List<Reservacion> findReservationByHuespedId(Long id);
 }

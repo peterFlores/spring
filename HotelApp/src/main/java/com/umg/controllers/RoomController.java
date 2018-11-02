@@ -51,6 +51,8 @@ public class RoomController {
 		
 	}
 	
+	
+	
 	@GetMapping("/rooms/{id}")
 	public Room show(@PathVariable Long id) {
 		return service.findById(id);
