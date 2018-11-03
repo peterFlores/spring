@@ -1,16 +1,10 @@
 package com.umg.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "factura")
 public class Factura implements Serializable {
 
 	/**
@@ -18,13 +12,11 @@ public class Factura implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@Column(name = "facturaID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFactura;
 	private String serie;
 	private String numfact;
 	private Float total;
+	private List<ItemFactura> items = new ArrayList<ItemFactura>();
 	public Long getIdFactura() {
 		return idFactura;
 	}
@@ -48,6 +40,12 @@ public class Factura implements Serializable {
 	}
 	public void setTotal(Float total) {
 		this.total = total;
+	}
+	public List<ItemFactura> getItems() {
+		return items;
+	}
+	public void setItems(List<ItemFactura> items) {
+		this.items = items;
 	}
 	
 	

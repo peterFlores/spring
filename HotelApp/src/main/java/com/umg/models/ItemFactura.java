@@ -9,8 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "itemfact")
+
 public class ItemFactura implements Serializable {
 
 	/**
@@ -18,29 +17,49 @@ public class ItemFactura implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@Column(name = "itemID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Long idItem;
-	private String item;
-	private Double costo;
+	private Double precio;
+	private String nombre;
+	private Integer cantidad;
+	private Double total;
+	private Integer idProducto;
+	
 	public Long getIdItem() {
 		return idItem;
 	}
 	public void setIdItem(Long idItem) {
 		this.idItem = idItem;
 	}
-	public String getItem() {
-		return item;
+	public Integer getCantidad() {
+		return cantidad;
 	}
-	public void setItem(String item) {
-		this.item = item;
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
 	}
-	public Double getCosto() {
-		return costo;
+	public Integer getIdProducto() {
+		return idProducto;
 	}
-	public void setCosto(Double costo) {
-		this.costo = costo;
+	public void setIdProducto(Integer idProducto) {
+		this.idProducto = idProducto;
+	}
+	public Double getTotal() {
+		return total;
+	}
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+	public Double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	

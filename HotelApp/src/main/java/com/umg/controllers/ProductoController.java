@@ -14,45 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.umg.models.ItemFactura;
-import com.umg.services.IFacturaItemService;
-
+import com.umg.models.Producto;
+import com.umg.services.IProductoService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
-public class FacturaItemController {
-	@Autowired
-	public IFacturaItemService service;
+@CrossOrigin(origins = {"*"})
+public class ProductoController {
 	
-
-	@GetMapping("/Itemfac")
-	public List<ItemFactura> Itemfac() {
+	@Autowired
+	public IProductoService service;
+	
+	@GetMapping("/productos")
+	public List<Producto> productos() {
 		return service.findAll();
 	}
 	
-	@PostMapping("/Itemfac")
+	@PostMapping("/productos")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ItemFactura agregarItemfactura(@RequestBody ItemFactura itemfactura) {
-		return service.save(itemfactura);
+	public Producto agregarProducto(@RequestBody Producto producto) {
+		return service.save(producto);
 		
 	}
 	
-	@GetMapping("/Itemfac/{id}")
-	public ItemFactura show(@PathVariable Long id) {
-		return service.findById(id);
-	}
 	
-	@PutMapping("/Itemfac/{id}")
+	@PutMapping("/productos/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ItemFactura update(@RequestBody ItemFactura itemfactura, @PathVariable Long id) {
-		ItemFactura itemActual = service.findById(id);
-//		itemActual.setItem(itemfactura.getItem());
-//		itemActual.setCosto(itemfactura.getCosto());
+	public Producto update(@RequestBody Producto producto, @PathVariable Long id) {
+		Producto productoActual = service.findById(id);
+		productoActual.setProducto(producto.getProducto());
+		productoActual.setCosto(producto.getCosto());
 		
-		return service.save(itemActual);
+		return service.save(productoActual);
 	}
 	
-	@DeleteMapping("/Itemfac/{id}")
+	@DeleteMapping("/productos/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		service.deleteById(id);
